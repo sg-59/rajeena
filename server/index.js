@@ -4,6 +4,7 @@ const cors=require('cors')
 const mongoose=require('mongoose')
 const dotenv=require('dotenv')
 const routerpage=require('./Router/userRouter')
+const loginRouter=require('./Router/loginRouter')
 dotenv.config()
 
 app.use(cors())
@@ -19,6 +20,7 @@ mongoose.connect(process.env.mongoUrl).then(()=>{
 
 
 app.use('/api',routerpage)
+app.use('/login',loginRouter)
 
 app.listen(3000,()=>{
     console.log("port 3000 is connected");
