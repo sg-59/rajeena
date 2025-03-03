@@ -30,7 +30,10 @@ setData({...data,[name]:value})
     function display(){
         console.log("first check",data);
       signupInfo(data).then((data)=>{
-setRes(data)
+        if(data){
+          setRes("signup success")
+        }
+
       })
     }
 
