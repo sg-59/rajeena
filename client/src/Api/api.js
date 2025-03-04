@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { display } from '../Redux/userSlice';
+import { display, haiOk } from '../Redux/userSlice';
 
 export const signupInfo=async(data)=>{
     console.log("second check",data);
@@ -25,6 +25,15 @@ return res.data
 
     }catch(err){
 console.log(err);
+
+    }
+}
+
+export const helloapi=async(dispatch)=>{
+    try{
+const res=await axios.get('https://jsonplaceholder.typicode.com/users')
+dispatch(haiOk(res.data))
+    }catch(err){
 
     }
 }

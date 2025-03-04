@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { sampleApi } from '../Api/api'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router'
 
 function Sample() {
+
+  const datasss=useSelector((state)=>state.userInfo.okData)
+
+  console.log(datasss);
+  
 
     const dispatch=useDispatch()
 
@@ -25,6 +30,9 @@ setData(response)
             </>
         ))}
         <Link to={'/hello'}>Hello page</Link>
+        <br />
+        <br />
+        <Link to={'/second'}>second page</Link>
     </div>
   )
 }
