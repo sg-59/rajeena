@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { display, haiOk } from '../Redux/userSlice';
+import { storeloginInfo } from '../Redux/loginSlice';
 
 export const signupInfo=async(data)=>{
     console.log("second check",data);
@@ -38,3 +39,19 @@ dispatch(haiOk(res.data))
     }
 }
 
+
+
+export const loggedData=async(data,dispatch)=>{
+    try{
+const res=await axios.post(`http://localhost:3000/login/verifylogin`,data)
+console.log("final answer in login",res.data);
+if(res.data.status){
+    dispatch(storeloginInfo(res.data))
+    return  "login success"
+}
+
+    }catch(err){
+console.log("error message in login status",err.response.data);
+return err.response.data
+    }
+}
