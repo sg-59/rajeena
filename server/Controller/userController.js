@@ -10,8 +10,12 @@ try{
     console.log("third check",req.body);
     // req.body.password=await bcrypt.hash(req.body.password, 10)
     req.body.password = await argon2.hash(req.body.password);
+    console.log("4 th check",req.body);
+    
 const databaseData=await user.create(req.body)
-return res.status(200).json({type:"signup suceess",ok:databaseData}) 
+console.log("final check",databaseData);
+
+return res.status(200).json({type:true,ok:databaseData}) 
 }catch(err){
 return res.status(500).json(err)
 }
@@ -19,8 +23,8 @@ return res.status(500).json(err)
 
 const getDatafromDatabase=async(req,res)=>{
     try{
-const a=await user.find()
-return res.status(200).json(a)
+const hai=await user.find()
+return res.status(200).json(hai)
     }catch(err){
 return res.status(500).json(err)
     }

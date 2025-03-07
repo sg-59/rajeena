@@ -18,7 +18,7 @@ if(!finUser){
 
     if (await argon.verify(finUser.password, req.body.password)) {
         const genereateToken=await jwt.sign({id:finUser._id},process.env.secKey,{expiresIn:"1d"})
-    return res.status(200).json({token:genereateToken,userId:finUser._id})
+    return res.status(200).json({token:genereateToken,userId:finUser._id,status:true})
     } else {
      return res.status(401).json("email password does'nt match")
     }
