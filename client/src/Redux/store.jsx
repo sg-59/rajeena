@@ -20,12 +20,12 @@ import userslice from './userSlice'
 
 
 const persistConfig = {
-  key: 'rajeenaProject',
+  key: 'rajeenasProject',
   version: 1,
   storage,
 }
 
-const rootReducer=combineReducers({userInfo:userslice},{loginInfos:loginslicePage})
+const rootReducer=combineReducers({userInfo:userslice,loginDatas:loginslicePage})
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)
 

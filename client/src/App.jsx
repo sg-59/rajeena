@@ -1,24 +1,28 @@
 import React from 'react'
 import {BrowserRouter,Route,Routes} from 'react-router'
 import Signup from './Pages/Signup'
-import Sample from './Pages/Sample'
-import Hello from './Pages/Hello'
-import Second from './Pages/Second'
 import Login from './Pages/Login'
 import { useSelector } from 'react-redux'
+import Home from './Pages/Home'
+import Profile from './Pages/Profile'
 
 function App() {
- const logindata= useSelector((state)=>state.loginInfos.loginInfo)
- console.log("final answer in login data from local storage",logindata);
+ const logindata= useSelector((state)=>state.loginDatas.loginInfo)
+ if(logindata){
+  var token=logindata.token
+ }
+
+ console.log("token value",token);
+ 
  
   return (
 <BrowserRouter>
 <Routes>
-  <Route path='/' element={<Signup/>}/>
-  <Route path='/sample' element={<Sample/>}/>
-  <Route path='/hello' element={<Hello/>}/>
-  <Route path='/second' element={<Second/>}/>
-  <Route path='/login' element={<Login/>}/>
+  <Route path='/' element={token ? <Home/> : <Login/>}/>
+  <Route path='/signup' element={<Signup/>}/>
+  <Route path='/profile' element={token ? <Profile/> : <Login/>}/>
+
+
 
 </Routes>
 </BrowserRouter>

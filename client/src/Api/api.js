@@ -55,3 +55,15 @@ console.log("error message in login status",err.response.data);
 return err.response.data
     }
 }
+
+export const takeProfileData=async(id)=>{
+    try{
+const res=await axios.get(`http://localhost:3000/api/getSingleData/${id}`)
+console.log("**********************",res.data);
+
+return res.data
+
+    }catch(err){
+
+    }
+}
