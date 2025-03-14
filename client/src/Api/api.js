@@ -67,3 +67,16 @@ return res.data
 
     }
 }
+
+
+export const updateDataformDatabase=async(id,data,navigate)=>{
+    try{
+const a=await axios.put(`http://localhost:3000/api/updataDatabase/${id}`,data)
+if(a.data){
+    alert("update successfully")
+    navigate('/profile')
+}
+    }catch(err){
+
+    }
+}

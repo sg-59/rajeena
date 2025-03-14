@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { takeProfileData } from '../Api/api';
+import { Link } from 'react-router';
 
 function Profile() {
     const logindata= useSelector((state)=>state.loginDatas.loginInfo)
@@ -25,6 +26,7 @@ console.log("////////////////////////////////",data);
         <h4>name : {data?.username}</h4>
         <h4>email : {data?.email}</h4>
         <h4>mobile : {data?.mobile}</h4>
+      <Link to={'/update'}><button>Update data</button></Link>  
     </div>
   )
 }

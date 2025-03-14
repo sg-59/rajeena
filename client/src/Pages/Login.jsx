@@ -13,6 +13,7 @@ import {
   import {styled} from "styled-components"
 import { loggedData } from '../Api/api';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router';
 
   const Main=styled.div`
     width: 100%;
@@ -71,7 +72,7 @@ function Login() {
 
 
           <div className="d-flex justify-content-between mx-4 mb-4">
-            <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
+            <Link to={'/signup'}>Create an account?</Link>
             <a href="!#">Forgot password?</a>
           </div>
 

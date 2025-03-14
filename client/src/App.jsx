@@ -5,6 +5,7 @@ import Login from './Pages/Login'
 import { useSelector } from 'react-redux'
 import Home from './Pages/Home'
 import Profile from './Pages/Profile'
+import Update from './Pages/Update'
 
 function App() {
  const logindata= useSelector((state)=>state.loginDatas.loginInfo)
@@ -21,6 +22,7 @@ function App() {
   <Route path='/' element={token ? <Home/> : <Login/>}/>
   <Route path='/signup' element={<Signup/>}/>
   <Route path='/profile' element={token ? <Profile/> : <Login/>}/>
+  <Route path='/update' element={token ? <Update/> : <Login/>}/>
 
 
 
