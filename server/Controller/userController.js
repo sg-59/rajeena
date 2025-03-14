@@ -74,12 +74,17 @@ return res.status(500).json(err)
 
 const updatedDataFromDatabase=async(req,res)=>{
     try{
-
+        if(req.body.password){
+            console.log("working ...................");
+            
+            req.body.password = await argon2.hash(req.body.password);
+        }
+        console.log("*************************************",req.body.password);
+        
+     
 const a=await user.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
-if(!a){
-    return res.status(401).json("user is not found")
-}
-return res.status(200).json(a)
+
+return res.status(200).json(true)
     }catch(err){
 return res.status(500).json(err)
     }
