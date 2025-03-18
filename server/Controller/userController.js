@@ -31,7 +31,7 @@ return res.status(500).json(err)
 }
 
 const getSingleDataFromdatabase=async(req,res)=>{
-    console.log(req.params.userId);
+    console.log("//////////////////////////",req.params.userId);
     
     try{
 const a=await user.findById(req.params.userId)
