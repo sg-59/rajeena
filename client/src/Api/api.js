@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { display, haiOk } from '../Redux/userSlice';
 import { storeloginInfo } from '../Redux/loginSlice';
+import { publicRequest, tokenRequest } from '../axiospages';
 
 export const signupInfo=async(data)=>{
     console.log("second check",data);
     
 try{
-const response=await axios.post('http://localhost:3000/api/postdata',data)
+const response=await publicRequest.post('/api/postdata',data)
 console.log("fourth check",response);
 return response.data.type
 
@@ -19,7 +20,7 @@ console.log(err);
 
 export const sampleApi=async(dispatch)=>{
     try{
-const res=await axios.get('http://localhost:3000/api/getData')
+const res=await publicRequest.get('/api/getData')
 console.log("final data",res.data);
 dispatch(display(res.data))
 return res.data
@@ -43,7 +44,7 @@ dispatch(haiOk(res.data))
 
 export const loggedData=async(data,dispatch)=>{
     try{
-const res=await axios.post(`http://localhost:3000/login/verifylogin`,data)
+const res=await publicRequest.post(`/login/verifylogin`,data)
 console.log("final answer in login",res.data);
 if(res.data.status){
     dispatch(storeloginInfo(res.data))
@@ -58,7 +59,7 @@ return err.response.data
 
 export const takeProfileData=async(id)=>{
     try{
-const res=await axios.get(`http://localhost:3000/api/getSingleData/${id}`)
+const res=await tokenRequest.get(`/api/getSingleData/${id}`)
 console.log("**********************",res.data);
 
 return res.data
@@ -71,7 +72,7 @@ return res.data
 
 export const updateDataformDatabase=async(id,data,navigate)=>{
     try{
-const a=await axios.put(`http://localhost:3000/api/updataDatabase/${id}`,data)
+const a=await tokenRequest.put(`/api/updataDatabase/${id}`,data)
 if(a.data){
     alert("update successfully")
     navigate('/profile')
